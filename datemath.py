@@ -14,13 +14,13 @@ def days_since_0(d):
     # add extras from leap years
     # don't count the target year if we haven't reached Feb 29
     if d['month'] == 1 or (d['month'] == 2 and d['day'] < 29):
-        leap_4_years = int((d['year'] - 1) / 4)
-        leap_100_years = int((d['year'] - 1) / 100)
-        leap_400_years = int((d['year'] - 1) / 400)
+        leap_year_factor = d['year'] - 1
     else:
-        leap_4_years = int((d['year']) / 4)
-        leap_100_years = int((d['year']) / 100)
-        leap_400_years = int((d['year']) / 400)
+        leap_year_factor = d['year']
+
+    leap_4_years = int(leap_year_factor / 4)
+    leap_100_years = int(leap_year_factor / 100)
+    leap_400_years = int(leap_year_factor / 400)
 
     total_days += (leap_4_years - leap_100_years + leap_400_years)
 
